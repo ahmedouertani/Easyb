@@ -75,13 +75,11 @@ pipeline {
             }
         }
 
-        stage('push Docker Image') {
-            steps {
-                script {
-                    dockerImage.push()
-                }
-            }
-        }
+  stage('Push') {
+      steps {
+        sh 'docker push bouhmiid/bouhmiid-dockerhub'
+      }
+    }
 
         stage('Run Docker Container') {
             steps {
@@ -91,11 +89,6 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                sh 'docker push valaxy/nodeapp:$BUILD_NUMBER'
-            }
-        }
 
         stage('Upload artifact') {
             steps {
