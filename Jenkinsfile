@@ -75,6 +75,14 @@ pipeline {
             }
         }
 
+        stage('push Docker Image') {
+            steps {
+                script {
+                    dockerImage.push()
+                }
+            }
+        }
+
         stage('Run Docker Container') {
             steps {
                 script {
