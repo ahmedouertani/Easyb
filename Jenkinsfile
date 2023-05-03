@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS_USR = credentials('bouhmiid')
-        DOCKERHUB_CREDENTIALS_PSW = credentials('bouhmidenaey97')
+        
         DOCKERHUB_CREDENTIALS = credentials ('bouhmiid-dockerhub')
     }
 
