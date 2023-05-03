@@ -1,4 +1,4 @@
-FROM debian:9 
+FROM ubuntu:20.04
 USER root
 RUN apt-get update -y && \
     apt-get -y upgrade 
