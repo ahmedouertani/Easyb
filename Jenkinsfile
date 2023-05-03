@@ -1,40 +1,12 @@
 pipeline {
     agent any
-    
-    options {
-        disableConcurrentBuilds()
-        skipDefaultCheckout(true)
-        skipStagesAfterUnstable()
-        timestamps()
-    }
-
-    triggers {
-        githubPush()
-    }
 
     environment {
-        registry = "bouhmiid/alpine"
-        registryCredential = 'tanitlab'
-        dockerImage = ''
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "http://192.168.1.207:8081"
-        NEXUS_REPOSITORY = "maven-nexus-repo"
-        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
-        NEXUS_SCRIPT = "maven-create-hosted"
-        SONARQUBE_URL = "http://192.168.1.207:9000" // URL de votre instance SonarQube
+        DOCKERHUB_CREDENTIALS = credentials ('bouhmiid-dockerhub')
     }
 
     stages {
 
-                /*stage('Login and setup') {
-
-            steps {
-
-             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-
-            }
-        }*/
         stage('Checkout Git') {   //Récupération du code source
             steps {
                 echo 'checking GitHub Repo'
@@ -42,17 +14,6 @@ pipeline {
                 url: 'https://github.com/ahmedouertani/Easyb.git'
             }
         }
-
-                /*stage('Push to Git') {
-  steps {
-    sh 'git config --global user.email "ahmed.ouertani.2@esprit.tn"'
-    sh 'git config --global user.name "ahmedouertani"'
-    sh 'git add .'
-    sh 'git commit -m "Automated commit by Jenkins"'
-    sh 'git push https://github.com/ahmedouertani/bqq.git main' //
-Utiliser l'URL HTTPS du référentiel Git
-  }
-}*/
 
         stage('Use Node.js') { //Installation de Node.JS
             steps {
@@ -69,23 +30,13 @@ Utiliser l'URL HTTPS du référentiel Git
             }
         }
 
-                        /*stage('Run Lint') {
+        /*stage('Run Lint') {
             steps {
                 sh 'npm run lint'
             }
         }*/
-        /*stage('Sonar Scanner Coverage') {
-        sh "npm run sonar"
-    } */
 
-/*stage('Make Prod Build') {
-        bat 'npx ng build --prod --base-href=/frontend/ && cd
-dist/frontend && jar -cvf frontend.war *'
-    }
-
-
-
-        stage('Build app') {
+        /*stage('Build app') {
             steps {
                 sh 'npm run build:prod'
             }
@@ -113,8 +64,14 @@ dist/frontend && jar -cvf frontend.war *'
             steps {
                 script {
                     def dockerImage = docker.build('testng', '.')
-                    dockerImage.push() // envoyer l'image vers un registre Docker
+                    dockerImage.push()
                 }
+            }
+        }
+
+        stage ('login to dockerhub') {
+            steps{
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
 
@@ -126,13 +83,11 @@ dist/frontend && jar -cvf frontend.war *'
             }
         }
 
-/*stage('Push Docker Image') {
+        stage('Push Docker Image') {
             steps {
-                withDockerRegistry([credentialsId: "docker_auth", url: "https://index.docker.io/v1/"]) {
-                    bat "docker push IMAGE_NAME:latest"
-                }
+                sh 'docker push valaxy/nodeapp:$BUILD_NUMBER'
             }
-        }*/
+        }
 
         stage('Upload artifact') {
             steps {
