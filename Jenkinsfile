@@ -112,7 +112,7 @@ dist/frontend && jar -cvf frontend.war *'
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build('testng', '-f /easyb .')
+                    def dockerImage = docker.build('testng', '.')
                     dockerImage.push() // envoyer l'image vers un registre Docker
                 }
             }
