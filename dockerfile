@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as builder
+FROM debian:9 as builder
 USER root
 RUN apt-get update -y && \
     apt-get -y upgrade 
