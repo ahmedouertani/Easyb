@@ -91,14 +91,14 @@ pipeline {
         }
 
 
-        stage('Upload artifact') {
+        /*stage('Upload artifact') {
             steps {
                 script {
-                    def artifacts = findFiles(glob: 'dist/**/*.js')
+                    def artifacts = findFiles(glob: 'dist/**//**.js')
                     archiveArtifacts artifacts
                 }
             }
-        }
+        }*/
     }
     
     post {
