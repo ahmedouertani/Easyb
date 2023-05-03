@@ -78,7 +78,7 @@ pipeline {
 
   stage('Push') {
       steps {
-        sh 'docker push bouhmiid/trip-bot'
+        sh 'docker push trip-bot'
       }
     }
 
