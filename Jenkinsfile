@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         
-        DOCKERHUB_CREDENTIALS = credentials ('bouhmiid-dockerhub')
+        DOCKERHUB_CREDENTIALS = credentials ('bouhmid-dockerhub')
     }
 
     stages {
