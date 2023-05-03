@@ -64,7 +64,7 @@ pipeline {
             steps {
                 script {
                     def dockerImage = docker.build('testng', '.')
-                    dockerImage.push()
+                    //dockerImage.push()
                 }
             }
         }
