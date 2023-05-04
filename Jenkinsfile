@@ -94,9 +94,8 @@ pipeline {
 
         stage('Sonarqube') {
 	 steps {
-    sh 'npm run build'
-    withSonarQubeEnv('SonarQube') {
-        sh 'sonar-scanner'
+    withSonarQubeEnv(installationName: 'sq9') {
+        sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
     }
 }
 }
