@@ -11,7 +11,9 @@
     "test:ci": "ng test -c=ci",
     "lint": "eslint .",
     "sonar": "sonar-scanner",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "test-karma": "ng test --browsers=ChromeHeadless --code-coverage"
+
   },
   "private": true,
   "dependencies": {
