@@ -78,7 +78,7 @@ pipeline {
 
   stage('Push') {
       steps {
-        sh 'docker push testng1:latest'
+        sh 'docker push bouhmiid/testng1:latest'
       }
     }
 
