@@ -93,7 +93,9 @@ pipeline {
         stage ('MVN Sonarqube'){
 
            steps {
-            sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=bouhmidenaey97'
+              sh 'npm install -g sonarqube-scanner'
+              sh 'ng lint'
+              sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=bouhmidenaey97'
 
            }
            }
