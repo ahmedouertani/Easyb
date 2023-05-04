@@ -93,8 +93,8 @@ pipeline {
         stage ('MVN Sonarqube'){
 
            steps {
-              sh 'npm install -g sonarqube-scanner'
-              sh 'ng lint'
+              sh 'npm install'
+              sh 'npm run test-karma'
               sh 'sonar:sonar -Dsonar.login=admin -Dsonar.password=bouhmidenaey97'
 
            }
