@@ -85,7 +85,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('testng').run('-p 4202:4202')
+                    docker.image('testng').run('-p 4200:4200')
                 }
             }
         }
