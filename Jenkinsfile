@@ -4,6 +4,8 @@ pipeline {
     environment {
         
         DOCKERHUB_CREDENTIALS = credentials ('bouhmiid-dockerhub')
+        SONAR_HOST_URL = "http://192.168.1.207:9000"
+
     }
 
     stages {
@@ -90,7 +92,16 @@ pipeline {
             }
         }*/
 
-        stage ('MVN Sonarqube'){
+        stage('Sonarqube') {
+	 steps {
+    sh 'npm run build'
+    withSonarQubeEnv('SonarQube') {
+        sh 'sonar-scanner'
+    }
+}
+}
+
+        /*stage ('MVN Sonarqube'){
 
            steps {
               sh 'npm install'
@@ -98,7 +109,7 @@ pipeline {
               sh 'sonar:sonar -Dsonar.login=admin -Dsonar.password=bouhmidenaey97'
 
            }
-           }
+           }*/
 
 
         /*stage('Upload artifact') {
