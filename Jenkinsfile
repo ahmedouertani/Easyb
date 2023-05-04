@@ -64,7 +64,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build('testng', '.')
+                    def dockerImage = docker.build('testng1', '.')
                     //dockerImage.push()
                 }
             }
@@ -78,7 +78,7 @@ pipeline {
 
   stage('Push') {
       steps {
-        sh 'docker push testng:testng'
+        sh 'docker push testng1:latest'
       }
     }
 
