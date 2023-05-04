@@ -39,30 +39,6 @@ pipeline {
             }
         }*/
 
-        /*stage('Build app') {
-            steps {
-                sh 'npm run build:prod'
-            }
-        }*/
-
-
-/*stage('Sonarqube') {
-    steps {
-            sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=bouhmidenaey97' // Exécuter l'analyse SonarQube avec Maven et les informations d'authentification appropriées
-        }
-    }*/
-
-     /*stage('SonarQube analysis') {
-      steps {
-        withSonarQubeEnv('SONARQUBE_TOKEN') {
-          // Exécution de l'analyse SonarQube
-          sh 'sonar-scanner' // Utilisation du scanner SonarQube pour analyser le code source
-        }
-      }
-    }*/
-
-
-
         stage('Build Docker Image') {
             steps {
                 script {
@@ -100,25 +76,6 @@ pipeline {
 }
 }
 
-        /*stage ('MVN Sonarqube'){
-
-           steps {
-              sh 'npm install'
-              sh 'npm run test-karma'
-              sh 'sonar:sonar -Dsonar.login=admin -Dsonar.password=bouhmidenaey97'
-
-           }
-           }*/
-
-
-        /*stage('Upload artifact') {
-            steps {
-                script {
-                    def artifacts = findFiles(glob: 'dist/**//**.js')
-                    archiveArtifacts artifacts
-                }
-            }
-        }*/
     }
     
     post {
