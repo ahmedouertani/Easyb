@@ -82,13 +82,13 @@ pipeline {
       }
     }
 
-        stage('Run Docker Container') {
+        /*stage('Run Docker Container') {
             steps {
                 script {
                     docker.image('testng').run('-p 4302:4302')
                 }
             }
-        }
+        }*/
 
         stage ('MVN Sonarqube'){
 
