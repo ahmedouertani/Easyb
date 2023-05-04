@@ -65,7 +65,7 @@ pipeline {
             steps {
                 script {
                     def dockerImage = docker.build('testng', '.')
-                    //dockerImage.push()
+                    dockerImage.push()
                 }
             }
         }
@@ -76,11 +76,11 @@ pipeline {
             }
         }
 
-  stage('Push') {
+  /*stage('Push') {
       steps {
         sh 'docker push bouhmiid/testng:testng'
       }
-    }
+    }*/
 
         stage('Run Docker Container') {
             steps {
