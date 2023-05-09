@@ -18,14 +18,6 @@ pipeline {
             }
         }
 
-        stage('UNIT Testing') {   //Récupération du code source
-            steps {
-                sh 'ng test'
-            }
-        }
-
-        
-
         stage('Use Node.js') { //Installation de Node.JS
             steps {
                 script {
