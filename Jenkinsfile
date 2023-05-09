@@ -18,6 +18,14 @@ pipeline {
             }
         }
 
+        stage('UNIT Testing') {   //Récupération du code source
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        
+
         stage('Use Node.js') { //Installation de Node.JS
             steps {
                 script {
