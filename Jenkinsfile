@@ -18,6 +18,12 @@ pipeline {
             }
         }
 
+                stage('Maven Build') { //Installation de Node.JS
+                def mavenHome = tool name: "Maven-3.9.1", type: "maven"
+                def mavenCMD = "${mavenHome}/bin/mvn"
+                sh "${mavenCMD} clean package"
+        }
+
         stage('Use Node.js') { //Installation de Node.JS
             steps {
                 script {
