@@ -20,7 +20,7 @@ pipeline {
 
         stage('UNIT Testing') {   //Récupération du code source
             steps {
-                sh 'mvn test'
+                sh 'ng test'
             }
         }
 
