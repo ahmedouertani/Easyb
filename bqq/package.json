@@ -10,6 +10,7 @@
     "build:prod": "ng build --prod",
     "test:ci": "ng test -c=ci",
     "lint": "eslint .",
+    "coverage": "ng test --code-coverage",
     "sonar": "sonar-scanner",
     "e2e": "ng e2e",
     "test-karma": "ng test --browsers=ChromeHeadless --code-coverage"
