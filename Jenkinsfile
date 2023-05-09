@@ -19,9 +19,9 @@ pipeline {
         }
 
                 stage('Maven build') { //Installation de Node.JS
-            steps {
+
                 sh 'mvn clean package'
-                }
+
             }
 
         stage('Use Node.js') { //Installation de Node.JS
