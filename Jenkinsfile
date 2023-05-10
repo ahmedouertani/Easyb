@@ -64,7 +64,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('testng1').run('-p 4303:4303')
+                    docker.image('easybq').run('-p 4303:4303')
                 }
             }
         }
