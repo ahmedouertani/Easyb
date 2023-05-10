@@ -14,6 +14,7 @@ RUN npm install --global yarn
 RUN yarn cache clean
 RUN rm -rf node_modules
 RUN npm install -g npm@7.5.6
+RUN docker system prune --all
 RUN npm install
 RUN ng build
 COPY startup.sh /bqq
