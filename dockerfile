@@ -12,6 +12,7 @@ WORKDIR /bqq
 RUN npm install -g @angular/cli
 RUN npm install --global yarn 
 RUN yarn cache clean
+RUN rm -rf node_modules
 RUN yarn set version 1.13.0
 RUN yarn install 
 RUN ng build
