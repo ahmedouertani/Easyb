@@ -10,9 +10,11 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x -o setup_14.sh && \
     apt install nodejs
 WORKDIR /bqq
 RUN npm install -g @angular/cli
-RUN npm install --global yarn && \
-    yarn install && \
-    ng build
+RUN npm install --global yarn 
+RUN yarn cache clean
+RUN yarn set version 1.13.0
+RUN yarn install 
+RUN ng build
 COPY startup.sh /bqq
 WORKDIR /bqq
 RUN chmod 777 ./startup.sh
