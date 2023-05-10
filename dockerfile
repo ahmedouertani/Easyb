@@ -1,4 +1,5 @@
-FROM ubuntu:20.04
+FROM node:19.5.0-alpine
+
 USER root
 RUN apt-get update -y && \
     apt-get -y upgrade 
