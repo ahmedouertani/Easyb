@@ -69,11 +69,11 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        /*stage('Deploy') {
     steps {
         nexusPublisher nexusInstanceId: 'nexus1', nexusRepositoryId: 'your-repo-id', protocol: 'http', serverUrl: 'http://nexus-url', packages: [[$class: 'NpmPackage', packageJson: 'package.json', targetRepo: 'your-repo-name']]
     }
-}
+}*/
 
 stage('Sonarqube') {
     steps {
