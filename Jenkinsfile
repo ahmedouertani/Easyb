@@ -69,15 +69,16 @@ pipeline {
             }
         }*/
 
-        stage('Sonarqube') {
-    steps {
-        script {
-            withCredentials([string(credentialsId: 'sonarqube-credentials', variable: 'SONAR_TOKEN')]) {
-                sh 'npm install -g sonarqube-scanner' // Installation du scanner SonarQube
-                sh 'sonar-scanner -Dsonar.host.url=http://192.168.1.207:9000 -Dsonar.login=admin -Dsonar.password=bouhmidenaey97 -Dsonar.projectKey=bqq -Dsonar.sources=src' // Exécution du scanner SonarQube pour le projet Angular
-            }
-        }
-    }
+
+stage('Sonarqube') {
+steps {
+script {
+withCredentials([string(credentialsId: 'sonarqube-credentials', variable: 'SONAR_TOKEN')]) {
+sh 'npm install -g sonarqube-scanner' // Installation du scanner SonarQube
+sh 'sonar-scanner -Dsonar.host.url=http://192.168.1.207:9000 -Dsonar.login=admin -Dsonar.password=bouhmidenaey97 -Dsonar.projectKey=bqq -Dsonar.sources=src' // Exécution du scanner SonarQube pour le projet Angular
+}
+}
+}
 }
 
 
