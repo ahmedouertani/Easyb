@@ -43,7 +43,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build('bouhmiid/EasyBQ', '.')
+                    def dockerImage = docker.build('bouhmiid/easybq', '.')
                     //dockerImage.push()
                 }
             }
@@ -57,7 +57,7 @@ pipeline {
 
   stage('Push') {
       steps {
-        sh 'docker push bouhmiid/EasyBQ:latest'
+        sh 'docker push bouhmiid/easybq:latest'
       }
     }
 
