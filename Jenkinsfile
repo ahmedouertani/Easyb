@@ -43,7 +43,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.build('bouhmiid/testng1', '.')
+                    def dockerImage = docker.build('bouhmiid/testng2', '.')
                     //dockerImage.push()
                 }
             }
