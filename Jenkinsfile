@@ -61,30 +61,29 @@ pipeline {
       }
     }
 
-        /*stage('Run Docker Container') {
+        stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('testng').run('-p 4302:4302')
+                    docker.image('testng').run('-p 4303:4303')
                 }
             }
-        }*/
+        }
 
+        stage('Deploy') {
+    steps {
+        nexusPublisher nexusInstanceId: 'nexus1', nexusRepositoryId: 'your-repo-id', protocol: 'http', serverUrl: 'http://nexus-url', packages: [[$class: 'NpmPackage', packageJson: 'package.json', targetRepo: 'your-repo-name']]
+    }
+}
 
 stage('Sonarqube') {
-steps {
-script {
-withCredentials([string(credentialsId: 'sonarqube-credentials', variable: 'SONAR_TOKEN')]) {
-sh 'npm install -g sonarqube-scanner' // Installation du scanner SonarQube
-sh 'sonar-scanner -Dsonar.host.url=http://192.168.1.207:9000 -Dsonar.login=admin -Dsonar.password=bouhmidenaey97 -Dsonar.projectKey=bqq -Dsonar.sources=src' // Exécution du scanner SonarQube pour le projet Angular
+    steps {
+        withSonarQubeEnv('SonarQube Server') {
+            sh 'npm install' // Installation des dépendances du projet
+            sh 'npm run test' // Exécution des tests
+            sh 'sonar-scanner' // Exécution du scanner SonarQube
+        }
+    }
 }
-}
-}
-}
-
-
-
-
-
 
     }
     
