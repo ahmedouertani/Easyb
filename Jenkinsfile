@@ -76,12 +76,10 @@ pipeline {
 }*/
 
 
-stage('Sonarqube') {
+stage('SonarQube') {
     steps {
-        script {
-            // Use SonarQubeScanner tool installation
+        withSonarQubeEnv('sonar-scanner') {
             sh 'sonar-scanner'
-
         }
     }
 }
