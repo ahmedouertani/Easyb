@@ -78,18 +78,8 @@ pipeline {
 
 stage('Sonarqube') {
     steps {
-        script {
-            // Use SonarQubeScanner tool installation
-            def scannerHome = tool 'sonar-scanner'
-
-            // Execute SonarQube scanner
-            withEnv(["PATH+SONARQUBE_SCANNER=${scannerHome}/bin"]) {
-                sh 'sonar-scanner -X'
-            }
-            
-            timeout(time: 10, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
-            }
+        withSonarQubeEnv('SonarQube') {
+            sh 'sonar-scanner'
         }
     }
 }
