@@ -56,11 +56,7 @@ module.exports = function (config) {
           '--window-size=1920,1080'  
         ]
       }  
-    },
-
-    
-
-    
+    },  
     singleRun: false,
     restartOnFileChange: true
   });
