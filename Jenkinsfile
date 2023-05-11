@@ -40,14 +40,14 @@ pipeline {
             }
         }*/
 
-        stage('Build Docker Image') {
+        /*stage('Build Docker Image') {
             steps {
                 script {
                     def dockerImage = docker.build('bouhmiid/easybq', '.')
                     //dockerImage.push()
                 }
             }
-        }
+        }*/
 
         stage ('login to dockerhub') {
             steps{
@@ -55,7 +55,7 @@ pipeline {
             }
         }
 
-  stage('Push') {
+  /*stage('Push') {
       steps {
         sh 'docker push bouhmiid/easybq:latest'
       }
@@ -69,15 +69,25 @@ pipeline {
             }
         }
 
-        /*stage('Deploy') {
+        stage('Deploy') {
     steps {
         nexusPublisher nexusInstanceId: 'nexus1', nexusRepositoryId: 'your-repo-id', protocol: 'http', serverUrl: 'http://nexus-url', packages: [[$class: 'NpmPackage', packageJson: 'package.json', targetRepo: 'your-repo-name']]
     }
 }*/
 
+
 stage('Sonarqube') {
     steps {
         container('SonarQubeScanner') {
+            // Générer le fichier sonar-project.properties
+            sh 'echo "sonar.projectKey=apols:easyb" > sonar-project.properties'
+            sh 'echo "sonar.projectName=easyb" >> sonar-project.properties'
+            sh 'echo "sonar.projectVersion=1.0.0" >> sonar-project.properties'
+            sh 'echo "sonar.sources=src" >> sonar-project.properties'
+            sh 'echo "sonar.exclusions=**/node_modules/**,**/*.spec.ts,**/dist/**,**/docs/**,**/*.js,**/coverage/**" >> sonar-project.properties'
+            // Ajoutez d'autres propriétés SonarQube si nécessaire
+
+            // Exécutez l'analyse SonarQube
             withSonarQubeEnv('SonarQube') {
                 sh "/usr/local/sonar-scanner"
             }

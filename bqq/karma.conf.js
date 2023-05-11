@@ -10,8 +10,12 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require ('karma-coverage-istanbul-reporter'),
+      require ('korma-sonarqube-unit-reporter')
     ],
+
+    
     client: {
       jasmine: {
         // you can add configuration options for Jasmine here
@@ -53,6 +57,10 @@ module.exports = function (config) {
         ]
       }  
     },
+
+    
+
+    
     singleRun: false,
     restartOnFileChange: true
   });

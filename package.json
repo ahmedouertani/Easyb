@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "istanbul": "^0.4.5"
+  },
+  "dependencies": {
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-sonarqube-unit-reporter": "^0.0.23"
   }
 }
