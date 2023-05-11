@@ -84,7 +84,7 @@ stage('Sonarqube') {
 
             // Execute SonarQube scanner
             withEnv(["PATH+SONARQUBE_SCANNER=${scannerHome}/bin"]) {
-                sh 'sonar-scanner'
+                sh 'sh 'sonar-scanner -X''
             }
             
             timeout(time: 10, unit: 'MINUTES') {
