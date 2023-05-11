@@ -75,14 +75,26 @@ pipeline {
     }
 }*/
 
+stage ('mvn clean')
+{
+    steps{
+        sh 'mvn clean'
+    }
+}
+
+stage ('mvn compile')
+{
+    steps{
+        sh 'mvn compile'
+    }
+}
 
 stage('SonarQube') {
     steps {
-        withSonarQubeEnv('sonar-scanner') {
-            sh 'sonar-scanner'
+        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=bouhmidenaey97'
         }
     }
-}
+
 
 
 
