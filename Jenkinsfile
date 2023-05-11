@@ -77,10 +77,13 @@ pipeline {
 
 stage('Sonarqube') {
     steps {
-        withSonarQubeEnv('SonarQube Server') {
-            sh 'npm install' // Installation des dépendances du projet
-            sh 'npm run test' // Exécution des tests
-            sh 'sonar-scanner' // Exécution du scanner SonarQube
+        container('SonarQubeScanner') {
+            withSonarQubeEnv('SonarQube') {
+                sh "/usr/local/sonar-scanner"
+            }
+            timeout(time: 10, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+            }
         }
     }
 }
