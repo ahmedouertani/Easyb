@@ -77,25 +77,9 @@ pipeline {
 
 
 stage('Sonarqube') {
-    steps {
-        container('SonarQubeScanner') {
-            // Générer le fichier sonar-project.properties
-            sh 'echo "sonar.projectKey=apols:easyb" > sonar-project.properties'
-            sh 'echo "sonar.projectName=easyb" >> sonar-project.properties'
-            sh 'echo "sonar.projectVersion=1.0.0" >> sonar-project.properties'
-            sh 'echo "sonar.sources=src" >> sonar-project.properties'
-            sh 'echo "sonar.exclusions=**/node_modules/**,**/*.spec.ts,**/dist/**,**/docs/**,**/*.js,**/coverage/**" >> sonar-project.properties'
-            // Ajoutez d'autres propriétés SonarQube si nécessaire
-
-            // Exécutez l'analyse SonarQube
-            withSonarQubeEnv('SonarQube') {
-                sh "/usr/local/sonar-scanner"
+                steps {
+                sh 'sonar-scanner'
             }
-            timeout(time: 10, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
-            }
-        }
-    }
 }
 
     }
