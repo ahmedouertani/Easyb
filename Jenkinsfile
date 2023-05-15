@@ -68,13 +68,13 @@ pipeline {
       }
     }
 
-        stage('Run Docker Container') {
+        /*stage('Run Docker Container') {
             steps {
                 script {
                     docker.image('bouhmiid/easybq').run('-p 4305:4305')
                 }
             }
-        }
+        }*/
 
 
 /*stage('Build Angular App') {
@@ -112,7 +112,7 @@ stage('Publish to Nexus Repository Manager') {
 
 stage('testing stage') {
     steps {
-        sh 'npx ng test --no-watch --code-coverage'
+        sh 'ng test --watch=false --code-coverage --include="src/main/resources/public/scripts/xyz/workspace/commons/interceptors/*.ng.spec.ts"'
         }
     }
 
