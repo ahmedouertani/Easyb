@@ -95,7 +95,7 @@ stage('Node version') {
     }
 stage('Testing Stage') {
     steps {
-        sh 'cd bqq && npm install && ng test --watch=false --code-coverage'
+        sh 'cd bqq && npm install && npm install korma-sonarqube-unit-reporter && ng test --watch=false --code-coverage'
     }
 }
 
