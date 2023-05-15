@@ -71,7 +71,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('bouhmiid/easybq').run('-p 4309:4309')
+                    docker.image('bouhmiid/easybq').run('-p 4310:4310')
                 }
             }
         }
@@ -108,7 +108,10 @@ stage('Publish to Nexus Repository Manager') {
         }
     }
 }*/
-
+stage('Node version') {
+    steps {
+        sh'node -v' }
+    }
 stage('testing stage') {
     steps {
         sh 'ng test --watch=false --code-coverage --include="src/main/resources/public/scripts/xyz/workspace/commons/interceptors/*.ng.spec.ts"'
