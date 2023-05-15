@@ -75,19 +75,12 @@ pipeline {
     }
 }*/
 
-stage ('mvn clean')
-{
-    steps{
-        sh 'mvn clean'
+stage ('test') {
+    steps {
+        sh ''' gcloud version '''
     }
 }
 
-stage ('mvn compile')
-{
-    steps{
-        sh 'mvn compile'
-    }
-}
 
 stage('SonarQube') {
     steps {
