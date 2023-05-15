@@ -4,10 +4,10 @@ RUN apt-get update -y && \
     apt-get -y upgrade 
 RUN apt-get install -y curl
 COPY bqq /bqq
-RUN curl -sL https://deb.nodesource.com/setup_16.x -o setup_14.sh && \
+RUN curl curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh -o setup_14.sh && \
     sh ./setup_14.sh && \
-    apt update -y && \
-    apt install nodejs
+    apt update -y 
+RUN nvm install node 14.2.0
 WORKDIR /bqq
 RUN npm install -g @angular/cli
 RUN npm install --global yarn 
