@@ -85,7 +85,7 @@ pipeline {
     }
 }*/
 
-stage('Maven Build') {
+/*stage('Maven Build') {
             steps {
                 sh 'mvn package -DskipTests=true'
             }
@@ -125,7 +125,7 @@ stage('Maven Build') {
                     }
                 }
             }
-        }
+        }*/
 
     
 
