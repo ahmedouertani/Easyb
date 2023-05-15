@@ -12,7 +12,7 @@ pipeline {
 
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "192.168.1.207:8081"
+        NEXUS_URL = "http://192.168.1.207:8081"
         NEXUS_REPOSITORY = "java-app"
         NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
 
@@ -85,7 +85,7 @@ pipeline {
     }
 }*/
 
-/*stage('Maven Build') {
+stage('Maven Build') {
             steps {
                 sh 'mvn package -DskipTests=true'
             }
@@ -125,7 +125,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
 
     
 
