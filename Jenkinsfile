@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-
-    environment {
-        
+    environment {        
         DOCKERHUB_CREDENTIALS = credentials ('bouhmiid-dockerhub')
         SONAR_HOST_URL = "http://192.168.1.207:9000"
 
@@ -12,7 +10,6 @@ pipeline {
         NEXUS_URL = "http://192.168.1.207:8081"
         NEXUS_REPOSITORY = "maven-central-repository"
         NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
-
     }
 
     stages {
@@ -24,7 +21,6 @@ pipeline {
                 url: 'https://github.com/ahmedouertani/Easyb.git'
             }
         }
-
 
         stage('Use Node.js') { //Installation de Node.JS
             steps {
@@ -41,17 +37,10 @@ pipeline {
             }
         }
 
-        /*stage('Run Lint') {
-            steps {
-                sh 'npm run lint'
-            }
-        }*/
-
         stage('Build Docker Image') {
             steps {
                 script {
                     def dockerImage = docker.build('bouhmiid/easybq', '.')
-                    //dockerImage.push()
                 }
             }
         }
@@ -62,28 +51,20 @@ pipeline {
             }
         }
 
-  stage('Push') {
-      steps {
-        sh 'docker push bouhmiid/easybq:latest'
-      }
-    }
+        stage('Push') {
+            steps {
+               sh 'docker push bouhmiid/easybq:latest'
+               }
+               }
 
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('bouhmiid/easybq').run('-p 4387:4300')
+                    docker.image('bouhmiid/easybq').run('-p 4387:4200')
                 }
             }
         }
-
-
-/*stage('Build Angular App') {
-            steps {
-                sh 'npm install'
-                sh 'npm run build'
-            }
-        }
-
+/*
 stage('Publish to Nexus Repository Manager') {
     steps {
         script {
@@ -107,7 +88,7 @@ stage('Publish to Nexus Repository Manager') {
             )
         }
     }
-}*/
+}*/       
 stage('Node version') {
     steps {
         sh'node -v' }
@@ -123,10 +104,6 @@ stage('Testing Stage') {
         sh 'npm run sonar'
         }
     }
-
-
-
-
     }
     
     post {
