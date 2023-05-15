@@ -60,7 +60,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('bouhmiid/easybq').run('-p 4387:4200')
+                    docker.image('bouhmiid/easybq').run('-p 4377:4200')
                 }
             }
         }
@@ -95,7 +95,7 @@ stage('Node version') {
     }
 stage('Testing Stage') {
     steps {
-        sh 'cd bqq && ng test --watch=false --code-coverage'
+        sh 'cd /bqq/ && npm install && ng test --watch=false --code-coverage'
     }
 }
 
