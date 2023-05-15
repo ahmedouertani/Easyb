@@ -120,7 +120,7 @@ stage('testing stage') {
 
         sh 'ng test --watch=false --code-coverage'
         }
-    }
+    }}
 
     stage('sonar scan stage') {
     steps {
