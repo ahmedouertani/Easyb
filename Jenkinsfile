@@ -108,7 +108,12 @@ stage('Publish to Nexus Repository Manager') {
         }
     }
 }*/
-    
+    stage('install g') {
+    steps {
+        sh 'npm install -g @angular/cli
+'
+        }
+    } 
 
 stage('testing stage') {
     steps {
