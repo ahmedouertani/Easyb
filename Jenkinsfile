@@ -71,7 +71,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('bouhmiid/easybq').run('-p 4307:4307')
+                    docker.image('bouhmiid/easybq').run('-p 4308:4308')
                 }
             }
         }
