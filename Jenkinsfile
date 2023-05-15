@@ -10,7 +10,7 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "http://192.168.1.207:8081"
-        NEXUS_REPOSITORY = "java-app"
+        NEXUS_REPOSITORY = "maven-central-repository"
         NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
 
     }
@@ -75,12 +75,7 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy') {
-    steps {
-        nexusPublisher nexusInstanceId: 'nexus1', nexusRepositoryId: 'your-repo-id', protocol: 'http', serverUrl: 'http://nexus-url', packages: [[$class: 'NpmPackage', packageJson: 'package.json', targetRepo: 'your-repo-name']]
-    }
-}*/
+*/
 
 stage('Build Angular App') {
             steps {
@@ -103,7 +98,7 @@ stage('Publish to Nexus Repository Manager') {
                 repository: 'maven-central-repository',
                 credentialsId: 'NEXUS_CRED',
                 artifacts: [
-                    [artifactId: 'angular-app',
+                    [artifactId: 'easyb',
                     classifier: '',
                     file: artifactPath,
                     type: 'tar.gz']
