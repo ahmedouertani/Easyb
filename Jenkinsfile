@@ -47,14 +47,14 @@ pipeline {
             }
         }*/
 
-        /*stage('Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 script {
                     def dockerImage = docker.build('bouhmiid/easybq', '.')
                     //dockerImage.push()
                 }
             }
-        }*/
+        }
 
         stage ('login to dockerhub') {
             steps{
@@ -62,7 +62,7 @@ pipeline {
             }
         }
 
-  /*stage('Push') {
+  stage('Push') {
       steps {
         sh 'docker push bouhmiid/easybq:latest'
       }
@@ -75,9 +75,9 @@ pipeline {
                 }
             }
         }
-*/
 
-stage('Build Angular App') {
+
+/*stage('Build Angular App') {
             steps {
                 sh 'npm install'
                 sh 'npm run build'
@@ -107,12 +107,18 @@ stage('Publish to Nexus Repository Manager') {
             )
         }
     }
-}
+}*/
     
 
-stage('SonarQube') {
+stage('testing stage') {
     steps {
-        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=bouhmidenaey97'
+        sh 'npx ng test --no-watch --code-coverage'
+        }
+    }
+
+    stage('sonar scan stage') {
+    steps {
+        sh 'npm run sonar'
         }
     }
 
