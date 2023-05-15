@@ -1,10 +1,20 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'MAVEN'
+    }
+
     environment {
         
         DOCKERHUB_CREDENTIALS = credentials ('bouhmiid-dockerhub')
         SONAR_HOST_URL = "http://192.168.1.207:9000"
+
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "http://192.168.1.207:8081"
+        NEXUS_REPOSITORY = "java-app"
+        NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
 
     }
 
@@ -75,12 +85,49 @@ pipeline {
     }
 }*/
 
-stage ('test') {
-    steps {
-        sh ''' gcloud version '''
-    }
-}
-
+stage("Maven Build") {
+            steps {
+                script {
+                    sh "mvn package -DskipTests=true"
+                }
+            }
+        }
+        stage("Publish to Nexus Repository Manager") {
+            steps {
+                script {
+                    pom = readMavenPom file: "pom.xml";
+                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
+                    artifactPath = filesByGlob[0].path;
+                    artifactExists = fileExists artifactPath;
+                    if(artifactExists) {
+                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                        nexusArtifactUploader(
+                            nexusVersion: 'nexus3',
+                            protocol: 'http',
+                            nexusUrl: 'http://192.168.1.207:8081',
+                            groupId: pom.groupId,
+                            version: pom.version,
+                            repository: 'maven-central-repository',
+                            credentialsId: 'NEXUS_CRED',
+                            artifacts: [
+                                [artifactId: pom.artifactId,
+                                classifier: '',
+                                file: artifactPath,
+                                type: pom.packaging],
+                                [artifactId: pom.artifactId,
+                                classifier: '',
+                                file: "pom.xml",
+                                type: "pom"]
+                            ]
+                        );
+                    } else {
+                        error "*** File: ${artifactPath}, could not be found";
+                    }
+                }
+            }
+        }
+    
 
 stage('SonarQube') {
     steps {
