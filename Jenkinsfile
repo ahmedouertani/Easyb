@@ -114,7 +114,7 @@ stage('Node version') {
     }
 stage('Testing Stage') {
     steps {
-        sh 'cd /bqq/ && ng test --watch=false --code-coverage'
+        sh 'cd bqq && ng test --watch=false --code-coverage'
     }
 }
 
