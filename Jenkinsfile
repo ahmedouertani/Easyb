@@ -71,7 +71,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('bouhmiid/easybq').run('-p 4351:4300')
+                    docker.image('bouhmiid/easybq').run('-p 4361:4300')
                 }
             }
         }
@@ -113,8 +113,10 @@ stage('Node version') {
         sh'node -v' }
     }
 stage('testing stage') {
+
     steps {
-        sh 'ng test --watch=false --code-coverage --include="src/main/resources/public/scripts/xyz/workspace/commons/interceptors/*.ng.spec.ts"'
+        dir('/bqq')
+        sh 'ng test --watch=false --code-coverage --include="/src/main/resources/public/scripts/xyz/workspace/commons/interceptors/*.ng.spec.ts"'
         }
     }
 
