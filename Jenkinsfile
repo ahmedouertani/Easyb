@@ -112,13 +112,11 @@ stage('Node version') {
     steps {
         sh'node -v' }
     }
-stage('testing stage') {
-
+stage('Testing Stage') {
     steps {
-        sh 'cd /bqq/' 
-        ng test --watch=false --code-coverage
-        }
+        sh 'cd /bqq/ && ng test --watch=false --code-coverage'
     }
+}
 
     stage('sonar scan stage') {
     steps {
