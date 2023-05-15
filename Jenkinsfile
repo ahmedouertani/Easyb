@@ -116,7 +116,7 @@ stage('testing stage') {
 
     steps {
         sh 'cd /bqq/' 
-        'ng test --watch=false --code-coverage'
+        ng test --watch=false --code-coverage
         }
     }
 
