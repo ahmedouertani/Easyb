@@ -68,13 +68,13 @@ pipeline {
       }
     }
 
-        /*stage('Run Docker Container') {
+        stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('bouhmiid/easybq').run('-p 4305:4305')
+                    docker.image('bouhmiid/easybq').run('-p 4306:4306')
                 }
             }
-        }*/
+        }
 
 
 /*stage('Build Angular App') {
@@ -108,12 +108,6 @@ stage('Publish to Nexus Repository Manager') {
         }
     }
 }*/
-    stage('install g') {
-    steps {
-        sh 'npm install -g @angular/cli
-'
-        }
-    } 
 
 stage('testing stage') {
     steps {
