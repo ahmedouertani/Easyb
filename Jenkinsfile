@@ -29,7 +29,7 @@ pipeline {
         stage('Use Node.js') { //Installation de Node.JS
             steps {
                 script {
-                    nodejs = tool 'nodejs-16'
+                    nodejs = tool 'nodejs-14'
                     env.PATH = "${nodejs}/bin:${env.PATH}"
                 }
             }
