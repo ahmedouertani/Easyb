@@ -72,8 +72,6 @@
     "sonarqube-scanner": "^3.0.1",
     "typescript": "~4.7.2"
   },
-
-
   "publishConfig": {
     "registry": "http://your-host:8081/repository/npm-private/"
   }
