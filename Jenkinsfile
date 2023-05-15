@@ -115,8 +115,8 @@ stage('Node version') {
 stage('testing stage') {
 
     steps {
-        dir('/bqq')
-        sh 'ng test --watch=false --code-coverage --include="/src/main/resources/public/scripts/xyz/workspace/commons/interceptors/*.ng.spec.ts"'
+        
+        sh 'ng test --watch=false --code-coverage'
         }
     }
 
