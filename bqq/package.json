@@ -13,7 +13,10 @@
     "coverage": "ng test --code-coverage",
     "sonar": "sonar-scanner",
     "e2e": "ng e2e",
-    "test-karma": "ng test --watch=false --code-coverage"
+    "test-karma": "ng test --watch=false --code-coverage",
+    "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
+    "build1": "webpack --config=Scripts/config/webpack.prod.js",
+    "test1": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true,
   "dependencies": {
