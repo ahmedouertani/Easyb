@@ -11,7 +11,7 @@
     "test:ci": "ng test -c=ci",
     "lint": "eslint .",
     "coverage": "ng test --code-coverage",
-    "sonar": "sonar-scanner",
+    "sonar": "node sonar-project.js",
     "e2e": "ng e2e",
     "test-karma": "ng test --watch=false --code-coverage",
     "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
@@ -49,7 +49,9 @@
     "sweetalert2": "^11.6.5",
     "tslib": "^2.3.0",
     "uuid": "^9.0.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "cfenv": "^1.1.0",
+    "express": "^4.16.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.6",
