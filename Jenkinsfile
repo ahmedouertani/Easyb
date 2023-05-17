@@ -22,16 +22,28 @@ pipeline {
             }
         }
 
-        stage('Use Node.js') { //Installation de Node.JS
+        /*stage('Use Node.js') { //Installation de Node.JS
             steps {
                 script {
                     nodejs = tool 'nodejs-14'
                     env.PATH = "${nodejs}/bin:${env.PATH}"
                 }
             }
+        }*/
+
+          stage('Use Node.js') { //Installation de Node.JS
+            steps {
+                script {
+                    nodejs(nodeJSInstallationName: 'nodejs15.3.0')
+                    sh "npm install"
+                }
+            }
         }
 
-        stage('Install dependencies') { //Installer les dépendances du projet
+
+
+
+        /*stage('Install dependencies') { //Installer les dépendances du projet
             steps {
                 sh 'npm install'
             }
@@ -88,7 +100,7 @@ stage('Publish to Nexus Repository Manager') {
             )
         }
     }
-}*/       
+}       
 stage('Node version') {
     steps {
         sh'node -v' }
@@ -103,7 +115,7 @@ stage('Testing Stage') {
     steps {
         sh 'npm run sonar'
         }
-    }
+    }*/
     }
     
     post {

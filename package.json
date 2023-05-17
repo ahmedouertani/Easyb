@@ -1,10 +1,14 @@
 {
   "devDependencies": {
     "istanbul": "^0.4.5",
-    "sonar-scanner": "^3.1.0"
+    "sonar-scanner": "^3.1.0",
+    "sonarqube-scanner": "^2.7.1"
+
   },
   "dependencies": {
     "karma-coverage-istanbul-reporter": "^3.0.3",
-    "karma-sonarqube-unit-reporter": "^0.0.23"
+    "karma-sonarqube-unit-reporter": "^0.0.23",
+    "cfenv": "^1.1.0",
+    "express": "^4.16.4"
   }
 }
