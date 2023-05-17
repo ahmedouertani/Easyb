@@ -32,11 +32,10 @@ pipeline {
         }*/
 
           stage('Use Node.js') { //Installation de Node.JS
-            steps {
-                script {
+
                     nodejs(nodeJSInstallationName: 'nodejs15.3.0')
                     sh "npm install"
-                }
+                
             }
         }
 
