@@ -25,7 +25,7 @@ pipeline {
         stage('Use Node.js') { //Installation de Node.JS
             steps {
                 script {
-                    nodejs = tool 'nodejs-14'
+                    nodejs = tool 'nodejs-16'
                     env.PATH = "${nodejs}/bin:${env.PATH}"
                 }
             }
@@ -67,7 +67,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    docker.image('bouhmiid/easybq').run('-p 4487:4200')
+                    docker.image('bouhmiid/easybq').run('-p 4489:4200')
                 }
             }
         }
