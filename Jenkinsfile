@@ -39,12 +39,10 @@ pipeline {
 
                 stage('ExcuteSonarQubeReport') { //Installer les dépendances du projet
             steps {
-                        withSonarQubeEnv('SonarQubeServer') {
                 //nodejs(nodeJSInstallationName: 'nodejs-14'){
-                sh 'sonar-scanner
-'
+                sh 'sonar-scanner'
             }
-        }}
+        }
 
         stage('Build Docker Image') {
             steps {
