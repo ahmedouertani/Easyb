@@ -37,6 +37,13 @@ pipeline {
             }
         }
 
+                stage('ExcuteSonarQubeReport') { //Installer les dépendances du projet
+            steps {
+                nodejs(nodeJSInstallationName: 'nodejs-14'){
+                sh 'npm run sonar'
+            }}
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
