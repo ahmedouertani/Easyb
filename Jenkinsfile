@@ -43,7 +43,7 @@ pipeline {
                 sh 'sonar-scanner
 '
             }
-        }}
+        }
 
         stage('Build Docker Image') {
             steps {
