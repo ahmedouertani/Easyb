@@ -43,7 +43,7 @@ pipeline {
                 //nodejs(nodeJSInstallationName: 'nodejs-14'){
                 sh 'npm run sonar'
             }
-        }
+        }}
 
         stage('Build Docker Image') {
             steps {
