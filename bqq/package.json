@@ -11,7 +11,7 @@
     "test:ci": "ng test -c=ci",
     "lint": "eslint .",
     "coverage": "ng test --code-coverage",
-    "sonar": "ng sonar",
+    "sonar": "npm run sonar",
     "e2e": "ng e2e",
     "test-karma": "ng test --watch=false --code-coverage",
     "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
