@@ -9,7 +9,6 @@ sonarqubeScanner({
         'sonar.login': 'admin',
         'sonar.password': 'bouhmidenaey97',
         'sonar.projectVersion': '1.0',
-        'sonar.language': 'js',
         'sonar.sourcesEncoding': 'UTF-8',
         'sonar.sources': '.',
         //'sonar.tests': 'specs',
